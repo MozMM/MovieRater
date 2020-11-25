@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { isLoadingSelector, movieDetailSelector } from '../store/movieSelectors'
-import { getMovieDetail } from '../store/movieActions'
+import { getMovieDetail, thumbsUp } from '../store/movieActions'
+import { justYear } from '../utils/dateFormat'
 
 
 
@@ -29,15 +30,33 @@ const MovieDetail = (props) => {
         :
         <div className="movie-detail">
           
-          <img src={`https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}`} alt={selectedMovie.title}/>
+          {selectedMovie.poster_path && <img src={`https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}`} alt={selectedMovie.title}/>}
           <div> Title: &nbsp; {selectedMovie.title}</div>
           <div> Director: &nbsp; {selectedMovie.director}</div>
-          {selectedMovie.release_date ? 
-            <div> Released: &nbsp; {selectedMovie.release_date.slice(0,4)}</div>
-            :
-            <div></div>
-          }
+          {selectedMovie.release_date && <div> Released: &nbsp; {justYear(selectedMovie.release_date)}</div>}
           <div> Description: &nbsp; {selectedMovie.overview}</div>
+          <div> 
+            {selectedMovie.ratingsFromDataBase ? 
+              <div>
+                &nbsp; thumbs up: &nbsp;{selectedMovie.ratingsFromDataBase.thumbsUp} &nbsp;
+                | &nbsp; thumbs down: &nbsp;{selectedMovie.ratingsFromDataBase.thumbsDown}
+              </div> 
+            :
+            <div> No one around here has voted on this movie yet, go ahead and be the first.</div> 
+            }
+          </div> 
+          <div> 
+            <button
+            onClick={() => dispatch(thumbsUp(selectedMovie.id))}
+            >
+              thumbs up!
+            </button>
+          </div> 
+          <div> 
+            <button>
+              thumbs down!
+            </button>
+          </div> 
         </div>
       }
     </div>
