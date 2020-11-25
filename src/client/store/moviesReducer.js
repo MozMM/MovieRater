@@ -18,7 +18,9 @@ export function moviesReducer(state = initialState, action) {
       return { ...state, movieResults: action.payload, errorMsg: null, isLoading: false };
     case types.GET_MOVIE_DETAIL_SUCCESS:
       return {...state, movieDetail: action.payload, errorMsg: null, isLoading: false };
-    case types.GET_MOVIE_DATA_FAIL:
+    case types.GET_UPDATED_RATING:
+      return {...state, movieDetail: {...state.movieDetail, ratingsFromDataBase: action.payload } };
+      case types.GET_MOVIE_DATA_FAIL:
       return { ...state, errorMsg: action.payload.message, isLoading: false  };
     default:
       return state

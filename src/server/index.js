@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
-
+const db = require('../server/db')
 const port = process.env.PORT || 5000; 
 
 app.use(morgan('dev'));
@@ -28,8 +28,12 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-app.listen(port, function () {
-  console.log(`Hello YearOne Folks. Your server is listening on port ${port}`);
-});
+db.sync()  // sync our database
+  .then(function(){
+    app.listen(port, function () {
+      console.log(`Hello YearOne Folks. Your server is listening on port ${port}`);
+    });
+})
+
 
 module.exports = app;

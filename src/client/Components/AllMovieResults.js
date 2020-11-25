@@ -41,7 +41,7 @@ const AllMovieResults = (props) => {
               {movie.title}
             </div>
             <div>
-              {movie.poster_path ? 
+              {movie.poster_path ?
               <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
               :
               <div style={{width: 500, height: 200, backgroundColor: 'blueviolet'}}></div> }

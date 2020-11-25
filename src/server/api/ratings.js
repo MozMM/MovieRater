@@ -1,28 +1,47 @@
 const express = require('express');
 const router = express()
+const { Ratings } = require('../db/models')
 
-router.get('/', async (req, res, next) => {
+// get rating
+router.get('/:id', async (req, res, next) => {
   try {
-    res.send('YEP, HELLO from Express Backend Test Route')
+    selectedMovieRatings = await Ratings.findOne({
+      where: {
+        movieId: req.params.id,
+      },
+      attributes: ['thumbsUp', 'thumbsDown']
+    })
+    res.json(selectedMovieRatings)
   } catch(err) {
     next(err)
   }
 })
 
-
 //add thumbs up rating
-router.put('/up', async (req, res, next) => {
+router.post('/:id/up', async (req, res, next) => {
   try {
-    res.send('Hello /up ROUTE')
+    let movieInstance = await Ratings.findOrCreate({
+      where: {
+        movieId: req.params.id
+      },
+    })
+    const updatedMovieRating = await movieInstance[0].increment('thumbsUp')
+    res.json(updatedMovieRating)
   } catch(err) {
     next(err)
   }
 })
 
 //add thumbs down rating
-router.put('/down', async (req, res, next) => {
+router.post('/:id/down', async (req, res, next) => {
   try {
-    res.send('Hello /up ROUTE')
+    let movieInstance = await Ratings.findOrCreate({
+      where: {
+        movieId: req.params.id
+      },
+    })
+    const updatedMovieRating = await movieInstance[0].increment('thumbsDown')
+    res.json(updatedMovieRating)
   } catch(err) {
     next(err)
   }
