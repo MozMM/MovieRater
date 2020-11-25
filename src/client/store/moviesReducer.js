@@ -1,9 +1,10 @@
-import * as types from './movieTypes';
+import * as types from './movieActionTypes';
 
 
 //----------- initial state ----------//
 const initialState = {
   movieResults: [],
+  movieDetail: {},
   errorMsg: false,
   isLoading: false
 }
@@ -15,12 +16,11 @@ export function moviesReducer(state = initialState, action) {
       return { ...state, isLoading: true };
     case types.GET_MOVIES_SUCCESS: 
       return { ...state, movieResults: action.payload, errorMsg: null, isLoading: false };
-    case types.GET_MOVIES_FAIL:
+    case types.GET_MOVIE_DETAIL_SUCCESS:
+      return {...state, movieDetail: action.payload, errorMsg: null, isLoading: false };
+    case types.GET_MOVIE_DATA_FAIL:
       return { ...state, errorMsg: action.payload.message, isLoading: false  };
     default:
       return state
   }
 }
-
-    // case GET_PROPERTIES:
-    //   return [...action.properties]

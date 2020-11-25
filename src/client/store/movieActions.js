@@ -1,36 +1,48 @@
 import axios from 'axios'
-import * as types from './movieTypes';
-import * as mockData from './mocks';
+import * as types from './movieActionTypes';
 
-//-----------  -----------//
-export const getMovies = () => async dispatch => {
+//----------- Get Movies -----------//
+export const getMovies = (searchString) => async (dispatch) => {
   dispatch({
     type: types.MOVIE_DATA_LOADING,
-    payload: mockData
   })
-  
-  // console.log("movies @ action creator", movies)
-  // Axios call // 
   try {
-    // const requestOptions = {};
-    // const allMovies = await axios.request(requestOptions);
-
-    // if (allMovies) {
+   
+    let moviesResponse = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US&query=${searchString}&page=1&include_adult=false`)
+   
+    if (moviesResponse.data.total_results) {
       dispatch({
         type: types.GET_MOVIES_SUCCESS,
-        payload: mockData
+        payload: moviesResponse.data.results 
       })
-    // }
-
+    }
   } catch (err) {
     dispatch({
-      type: types.GET_MOVIES_FAIL,
+      type: types.GET_MOVIE_DATA_FAIL,
       payload: err
     })
   }
 }
 
-export const getMovieDetail = (id) => {
-
-
+//-----------Get Single Movie Detail -----------//
+export const getMovieDetail = (id) => async (dispatch) => {
+  dispatch({
+    type: types.MOVIE_DATA_LOADING,
+  })
+  try {
+    let movieDetailResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US`)
+    let movieCreditsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US`)
+    let directorObj = movieCreditsResponse.data.crew.filter(crewMember => crewMember.job === "Director")[0]
+      if (movieDetailResponse.data && directorObj) {
+        dispatch({
+          type: types.GET_MOVIE_DETAIL_SUCCESS,
+          payload: {...movieDetailResponse.data, director: directorObj.name}
+        })
+      }
+  } catch (err) {
+    dispatch({
+      type: types.GET_MOVIE_DATA_FAIL,
+      payload: err
+    })
+  }
 }
