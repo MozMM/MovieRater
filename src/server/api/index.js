@@ -5,7 +5,7 @@ const router = express()
 router.use('/ratings', require('./ratings'))
 
 router.use(function (req, res, next) {
-  const err = new Error('Nope not found.');
+  const err = new Error('Sorry, that data was not found.');
   err.status = 404;
   next(err);
 });

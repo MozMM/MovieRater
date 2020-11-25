@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../store/movieActions';
@@ -15,50 +15,47 @@ const AllMovieResults = (props) => {
   const isLoading = useSelector(isLoadingSelector);
   const hasResults = movieResults.length > 0;
 
+  const [input, setInput] = useState('');
+
+  const handleInputChange = (evt) => setInput(evt.target.value);
+
   if (isLoading) {
     return (<div>Loading...</div>);
   }
 
-  const handleGetMovieClick = (evt) => {
-    // send params as function args here
-    dispatch(getMovies());
-  }
-  console.log('---> ', hasResults)
   return (
     <div className="movieresults__container">
-      <button onClick={handleGetMovieClick}>Get Movie</button>
-      {hasResults && movieResults.map(movie => (
-        <div key={movie.id}>
-          <Link to={`/movie/${movie.id}`}>
-            <button >{movie.name}</button>
-          </Link>
+      <form>
+        <div>
+          <label>Enter a Movie Title here:</label>
+          <input type="text" onChange={handleInputChange} />
         </div>
-      ))}
-      {movieFetchErrors}
+        <div>
+          <button type='submit' onClick={() => dispatch(getMovies(input))}>Get Movie</button>
+        </div>
+      </form>
+      <div>
+        {hasResults && movieResults.map((movie) => (
+          <div key={movie.id}>
+            <div>
+              {movie.title}
+            </div>
+            <div>
+              {movie.poster_path ? 
+              <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
+              :
+              <div style={{width: 500, height: 200, backgroundColor: 'blueviolet'}}></div> }
+            </div>
+            <Link to={`/movie/${movie.id}`}>
+              <button>get details</button>
+            </Link>
+          </div>
+        ))}
+        {movieFetchErrors}
+      </div>
     </div>
   )
 }
 
 export default AllMovieResults;
 
-// class AllMovieResults extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <h1 style={{background:'blue' }}> Hello World </h1>
-//       </div>
-//     )
-//   }
-// }
-
-// const mapState = state => {
-//   return {
-    
-//   }
-// }
-
-// const mapDispatch = dispatch => ({
-//   //getSingleProperty: id => dispatch(fetchProperty(id))
-// })
-
-// export default connect(mapState, mapDispatch)(AllMovieResults)
