@@ -1,9 +1,25 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoadingSelector, movieDetailSelector } from '../store/movieSelectors'
-import { getMovieDetail, thumbsUp } from '../store/movieActions'
-import { justYear } from '../utils/dateFormat'
+import { isLoadingSelector, movieDetailSelector, ratingFromDataBaseSelector } from '../store/movieSelectors';
+import { getMovieDetail, getRating, thumbsUp, thumbsDown } from '../store/movieActions';
+import { justYear } from '../utils/dateFormat';
+import thumbsUpImage from '../images/ThumbsUp.jpg';
+import thumbsDownImage from '../images/ThumbsDown.jpg';
 
+
+
+const renderRatings = (ratingFromDataBase) => { 
+  if (!ratingFromDataBase) {
+    return (<div> No one around here has voted on this movie yet, go ahead and be the first.</div>);
+  }
+  const { thumbsUp, thumbsDown } = ratingFromDataBase;
+  return (
+    <div>
+      {`thumbs up: ${thumbsUp} 
+      | thumbs down: ${thumbsDown}`}
+    </div> 
+  );
+}
 
 
 const MovieDetail = (props) => {
@@ -11,62 +27,56 @@ const MovieDetail = (props) => {
   // this.props.match.params.id
   const { match: { params: { id }}} = props;
   const dispatch = useDispatch();
- 
+  const ratingFromDataBase = useSelector(ratingFromDataBaseSelector)
   const selectedMovie = useSelector(movieDetailSelector) 
   const isLoading = useSelector(isLoadingSelector);
 
   useEffect(() => {
     dispatch(getMovieDetail(id));
+    dispatch(getRating(id))
   }, []); // pass it state variables to watch, empty [] will only run callback on mount. 
 
-  
-  console.log('@ MovieDetail component before return', selectedMovie)
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  console.log('@ MovieDetail component before return', ratingFromDataBase)
   return (
     <div>
-      {isLoading ? 
-        <div> 
-          Loading...
-        </div>
-        :
         <div className="movie-detail">
-          
-          {selectedMovie.poster_path && <img src={`https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}`} alt={selectedMovie.title}/>}
-          <div> Title: &nbsp; {selectedMovie.title}</div>
-          <div> Director: &nbsp; {selectedMovie.director}</div>
+          {selectedMovie.poster_path && 
+            <img 
+              src={`https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}`} 
+              alt={selectedMovie.title}
+            />}
+          <div>{`Title: ${selectedMovie.title}`}</div>
+          <div> {`Director: ${selectedMovie.director}`}</div>
           {selectedMovie.release_date && <div> Released: &nbsp; {justYear(selectedMovie.release_date)}</div>}
-          <div> Description: &nbsp; {selectedMovie.overview}</div>
+          <div>{` Description: ${selectedMovie.overview}`}</div>
           <div> 
-            {selectedMovie.ratingsFromDataBase ? 
-              <div>
-                &nbsp; thumbs up: &nbsp;{selectedMovie.ratingsFromDataBase.thumbsUp} &nbsp;
-                | &nbsp; thumbs down: &nbsp;{selectedMovie.ratingsFromDataBase.thumbsDown}
-              </div> 
-            :
-            <div> No one around here has voted on this movie yet, go ahead and be the first.</div> 
-            }
+            {renderRatings(ratingFromDataBase)}
           </div> 
           <div> 
             <button
+            className='thumbs'
             onClick={() => dispatch(thumbsUp(selectedMovie.id))}
             >
-              thumbs up!
+              <img src={thumbsUpImage} alt='up'/>
             </button>
           </div> 
           <div> 
-            <button>
-              thumbs down!
+            <button
+            className='thumbs'
+            onClick={() => dispatch(thumbsDown(selectedMovie.id))}
+            >
+            <img src={thumbsDownImage} alt='down'/>
             </button>
           </div> 
         </div>
-      }
     </div>
   )
 };
 
 export default MovieDetail;
 
-// Curried for using data from movie Obj array already on state: 
-  // const selectedMovie = useSelector((state) => {
-  //   const movies = movieResultsSelector(state);
-  //   return movies.filter(movie => movie.id === Number(id))[0];
-  // })
+
