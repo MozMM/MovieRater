@@ -8,6 +8,14 @@ import {
   isLoadingSelector
 } from '../store/movieSelectors';
 
+const renderPoster = (movie) => {
+  return movie.poster_path ?
+    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
+    :
+    <div style={{width: 500, height: 200, backgroundColor: 'blueviolet'}}></div> 
+}
+
+
 const AllMovieResults = (props) => {
   const dispatch = useDispatch();
   const movieResults = useSelector(movieResultsSelector);
@@ -22,7 +30,7 @@ const AllMovieResults = (props) => {
   if (isLoading) {
     return (<div>Loading...</div>);
   }
-
+  console.log({movieResults})
   return (
     <div className="movieresults__container">
       <form>
@@ -41,17 +49,14 @@ const AllMovieResults = (props) => {
               {movie.title}
             </div>
             <div>
-              {movie.poster_path ?
-              <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
-              :
-              <div style={{width: 500, height: 200, backgroundColor: 'blueviolet'}}></div> }
+              {renderPoster(movie)}
             </div>
             <Link to={`/movie/${movie.id}`}>
               <button>get details</button>
             </Link>
           </div>
         ))}
-        {movieFetchErrors}
+        {movieFetchErrors && <div>Sorry, let's try that again.</div>}
       </div>
     </div>
   )
