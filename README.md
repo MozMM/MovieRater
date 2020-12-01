@@ -3,7 +3,7 @@
 ## Marta Mozelle - Sole Developer
 
 ## ⭐  Project is in progress! 
-### Structure is complete. Still to be completed: Frontend styling and adding further tests. 
+### Structure is complete. Still to do: Frontend styling and adding further tests. 
 
 ### What is it?
 - Web app to search movies and rate them.
