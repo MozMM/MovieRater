@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { isLoadingSelector, movieDetailSelector, ratingFromDataBaseSelector } from '../store/movieSelectors';
 import { getMovieDetail, getRating, thumbsUp, thumbsDown } from '../store/movieActions';
-import { justYear } from '../utils/dateFormat';
+import { justYear } from '../utils/dateUtils';
 import thumbsUpImage from '../images/ThumbsUp.jpg';
 import thumbsDownImage from '../images/ThumbsDown.jpg';
 
@@ -51,7 +51,7 @@ const MovieDetail = (props) => {
             />}
           <div>{`Title: ${selectedMovie.title}`}</div>
           <div> {`Director: ${selectedMovie.director}`}</div>
-          {selectedMovie.release_date && <div> Released: &nbsp; {justYear(selectedMovie.release_date)}</div>}
+          {selectedMovie.release_date && <div> {`Released: ${justYear(selectedMovie.release_date)}`}</div>}
           <div>{` Description: ${selectedMovie.overview}`}</div>
           <div> 
             {renderRatings(ratingFromDataBase)}

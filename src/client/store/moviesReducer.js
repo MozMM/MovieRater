@@ -2,7 +2,7 @@ import * as types from './movieActionTypes';
 
 
 //----------- initial state ----------//
-const initialState = {
+export const initialState = {
   movieResults: [],
   movieDetail: {},
   ratingFromDataBase: null,
@@ -26,8 +26,6 @@ export function moviesReducer(state = initialState, action) {
       return {...state, ratingFromDataBase: action.payload, dataBaseErr: null};
     case types.GET_RATING_FROM_DB_FAIL:
       return {...state, dataBaseErr: action.payload };
-    // case types.GET_UPDATED_RATING:
-    //   return {...state, ratingFromDataBase: action.payload };
     default:
       return state
   }

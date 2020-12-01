@@ -8,14 +8,13 @@ export const getMovies = (searchString) => async (dispatch) => {
     type: types.MOVIE_DATA_LOADING,
   })
   try {
-    let moviesResponse = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US&query=${searchString}&page=1&include_adult=false`)
-   
-  if (moviesResponse.data.total_results) {
-    dispatch({
-      type: types.GET_MOVIES_SUCCESS,
-      payload: moviesResponse.data.results 
-    })
-  }
+    let moviesResponse = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US&query=${searchString}&page=1&include_adult=false`);
+    if (moviesResponse.data) {
+      dispatch({
+        type: types.GET_MOVIES_SUCCESS,
+        payload: moviesResponse.data.results 
+      })
+    }
   } catch (err) {
     dispatch({
       type: types.GET_MOVIE_DATA_FAIL,
@@ -23,7 +22,6 @@ export const getMovies = (searchString) => async (dispatch) => {
     })
   }
 }
-
 
 //-----------Get Single Movie Detail -----------//
 export const getMovieDetail = (id) => async (dispatch) => {
@@ -51,9 +49,10 @@ export const getMovieDetail = (id) => async (dispatch) => {
   }
 }
 
+//---------------Database Actions--------------// 
 export const getRating = (id) => async (dispatch) => {
   try {
-    let movieRatingResponse = await axios.get(`/api/ratings/${id}`)
+    let movieRatingResponse = await axios.get(`/api/ratings/${id}`);
     if (movieRatingResponse) {
       dispatch({
         type: types.GET_RATING_FROM_DB,
@@ -61,19 +60,16 @@ export const getRating = (id) => async (dispatch) => {
       })
     }
   } catch {
-    console.log('please check database connection.')
     dispatch({
       type: types.GET_RATING_FROM_DB_FAIL,
       payload: 'please check database connection.'
     })
   }
-
 }
 
 export const thumbsUp = (id) => async (dispatch) => {
   try {
-    let updatedRatingResponse = await axios.post(`/api/ratings/${id}/up`)
-    console.log(updatedRatingResponse)
+    let updatedRatingResponse = await axios.post(`/api/ratings/${id}/up`);
     if (updatedRatingResponse) {
       dispatch({
         type: types.GET_RATING_FROM_DB,
@@ -84,14 +80,16 @@ export const thumbsUp = (id) => async (dispatch) => {
       })
     }
   } catch(err) {
-    console.log(err)
+    dispatch({
+      type: types.GET_RATING_FROM_DB_FAIL,
+      payload: 'please check database connection.'
+    })
   }
 }
 
 export const thumbsDown = (id) => async (dispatch) => {
   try {
-    let updatedRatingResponse = await axios.post(`/api/ratings/${id}/down`)
-    console.log(updatedRatingResponse)
+    let updatedRatingResponse = await axios.post(`/api/ratings/${id}/down`);
     if (updatedRatingResponse) {
       dispatch({
         type: types.GET_RATING_FROM_DB,
@@ -102,6 +100,9 @@ export const thumbsDown = (id) => async (dispatch) => {
       })
     }
   } catch(err) {
-    console.log(err)
+    dispatch({
+      type: types.GET_RATING_FROM_DB_FAIL,
+      payload: 'please check database connection.'
+    })
   }
 }
