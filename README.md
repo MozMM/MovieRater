@@ -3,7 +3,7 @@
 ### Marta Mozelle - Sole Developer
 
 ## ⭐  Project is in progress! 
-### Structure is complete. Still to do: Frontend styling and adding further tests. 
+### Structure is completed. Still to do: Frontend styling and adding further tests. 
 
 ### Project goals met: 
 - Integrated calls to [The Movie Database API](themoviedb.org) for listing data. 
