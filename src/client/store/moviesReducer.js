@@ -1,6 +1,5 @@
 import * as types from './movieActionTypes';
 
-
 //----------- initial state ----------//
 export const initialState = {
   movieResults: [],
@@ -23,7 +22,7 @@ export function moviesReducer(state = initialState, action) {
     case types.GET_MOVIE_DATA_FAIL:
       return { ...state, errorMsg: action.payload.message, isLoading: false };
     case types.GET_RATING_FROM_DB:
-      return {...state, ratingFromDataBase: action.payload, dataBaseErr: null};
+      return {...state, ratingFromDataBase: action.payload, dataBaseErr: null };
     case types.GET_RATING_FROM_DB_FAIL:
       return {...state, dataBaseErr: action.payload };
     default:

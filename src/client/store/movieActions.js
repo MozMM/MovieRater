@@ -1,6 +1,5 @@
 import axios from 'axios'
 import * as types from './movieActionTypes';
-import { bindActionCreators } from 'redux';
 
 //----------- Get Movies -----------//
 export const getMovies = (searchString) => async (dispatch) => {
@@ -31,13 +30,24 @@ export const getMovieDetail = (id) => async (dispatch) => {
   try {
     let movieDetailResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US`)
     let movieCreditsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US`)
-    let directorObj = movieCreditsResponse.data.crew.filter(crewMember => crewMember.job === "Director")[0];
+    let directorObj = {};
+    if (movieCreditsResponse.data) {
+      directorObj = movieCreditsResponse.data.crew.filter(crewMember => crewMember.job === "Director")[0];
+    }
     if (movieDetailResponse.data && directorObj) {
       dispatch({
         type: types.GET_MOVIE_DETAIL_SUCCESS,
         payload: {
           ...movieDetailResponse.data, 
           director: directorObj.name
+        }
+      })
+    } else if (movieDetailResponse.data) {
+      dispatch({
+        type: types.GET_MOVIE_DETAIL_SUCCESS,
+        payload: {
+          ...movieDetailResponse.data, 
+          director: 'Name not available'
         }
       })
     }

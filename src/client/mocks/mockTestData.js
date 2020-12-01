@@ -1,7 +1,5 @@
 export const urlMovieSearch =  `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US&query=never%20ending%20story&page=1&include_adult=false`;
 
-export const urlForFail =  `https://api.themoviedb.org/3/search/movie?api_key=$1234&language=en-US&query=never%20ending%20story&page=1&include_adult=false`;
-
 export const urlMovieDetail = `https://api.themoviedb.org/3/movie/34636/credits?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US`;
 
 export const urlMovieCredit = `https://api.themoviedb.org/3/movie/34636/credits?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&language=en-US`;
@@ -1094,5 +1092,3 @@ export const detailWithDirector = {
    ...movieDetailResponse.data, 
    director: "George T. Miller",
 }
-
-//export const ratingResponse = 

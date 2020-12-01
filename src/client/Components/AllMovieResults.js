@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from '../store/movieActions';
 import { 
   movieErrorSelector, 
@@ -14,7 +14,6 @@ const renderPoster = (movie) => {
     :
     <div style={{width: 500, height: 200, backgroundColor: 'blueviolet'}}></div> 
 }
-
 
 const AllMovieResults = (props) => {
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ const AllMovieResults = (props) => {
   if (isLoading) {
     return (<div>Loading...</div>);
   }
-  console.log({movieResults})
+
   return (
     <div className="movieresults__container">
       <form>
@@ -63,4 +62,3 @@ const AllMovieResults = (props) => {
 }
 
 export default AllMovieResults;
-
