@@ -7,8 +7,8 @@
 
 ### What is it?
 - Web app to search movies and rate them.
-- Integrates calls to a Movie API for listing data. 
-- Has an Express and Sequelize API created to store and searve rating data from site users. 
+- Integrated calls to [The Movie Database API](themoviedb.org) for listing data. 
+- Wrote backend API to store and serve rating data from site users. 
 
 ### Things to note:
 - Worked with React-Redux selectors. These replace the need for Redux's connect() & connected components with mapState and mapDispatch functions. Found it to be more consise. 
