@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize')
 const pkg = require('../../../package.json')
 
-
 const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '_test' : '')
 
 // process.env is useful for deploying to heroku

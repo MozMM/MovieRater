@@ -6,8 +6,6 @@ import { justYear } from '../utils/dateUtils';
 import thumbsUpImage from '../images/ThumbsUp.jpg';
 import thumbsDownImage from '../images/ThumbsDown.jpg';
 
-
-
 const renderRatings = (ratingFromDataBase) => { 
   if (!ratingFromDataBase) {
     return (<div> No one around here has voted on this movie yet, go ahead and be the first.</div>);
@@ -21,10 +19,7 @@ const renderRatings = (ratingFromDataBase) => {
   );
 }
 
-
 const MovieDetail = (props) => {
-  // pull movie id off match.params from BrowserRouter
-  // this.props.match.params.id
   const { match: { params: { id }}} = props;
   const dispatch = useDispatch();
   const ratingFromDataBase = useSelector(ratingFromDataBaseSelector)
@@ -34,13 +29,12 @@ const MovieDetail = (props) => {
   useEffect(() => {
     dispatch(getMovieDetail(id));
     dispatch(getRating(id))
-  }, []); // pass it state variables to watch, empty [] will only run callback on mount. 
+  }, []); // empty [] will only run callback on mount. 
 
   if (isLoading) {
     return <div>Loading...</div>
   }
 
-  console.log('@ MovieDetail component before return', ratingFromDataBase)
   return (
     <div>
         <div className="movie-detail">
@@ -78,5 +72,3 @@ const MovieDetail = (props) => {
 };
 
 export default MovieDetail;
-
-
