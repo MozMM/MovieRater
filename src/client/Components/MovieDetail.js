@@ -37,36 +37,36 @@ const MovieDetail = (props) => {
 
   return (
     <div>
-        <div className="movie-detail">
-          {selectedMovie.poster_path && 
-            <img 
-              src={`https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}`} 
-              alt={selectedMovie.title}
-            />}
-          <div>{`Title: ${selectedMovie.title}`}</div>
-          <div> {`Director: ${selectedMovie.director}`}</div>
-          {selectedMovie.release_date && <div> {`Released: ${justYear(selectedMovie.release_date)}`}</div>}
-          <div>{` Description: ${selectedMovie.overview}`}</div>
-          <div> 
-            {renderRatings(ratingFromDataBase)}
-          </div> 
-          <div> 
-            <button
-            className='thumbs'
-            onClick={() => dispatch(thumbsUp(selectedMovie.id))}
-            >
-              <img src={thumbsUpImage} alt='up'/>
-            </button>
-          </div> 
-          <div> 
-            <button
-            className='thumbs'
-            onClick={() => dispatch(thumbsDown(selectedMovie.id))}
-            >
-            <img src={thumbsDownImage} alt='down'/>
-            </button>
-          </div> 
-        </div>
+      <div className="movie-detail">
+        {selectedMovie.poster_path && 
+          <img 
+            src={`https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}`} 
+            alt={selectedMovie.title}
+          />}
+        <div>{`Title: ${selectedMovie.title}`}</div>
+        <div> {`Director: ${selectedMovie.director}`}</div>
+        {selectedMovie.release_date && <div> {`Released: ${justYear(selectedMovie.release_date)}`}</div>}
+        <div>{` Description: ${selectedMovie.overview}`}</div>
+        <div> 
+          {renderRatings(ratingFromDataBase)}
+        </div> 
+        <div> 
+          <button
+          className='thumbs'
+          onClick={() => dispatch(thumbsUp(selectedMovie.id))}
+          >
+            <img src={thumbsUpImage} alt='up'/>
+          </button>
+        </div> 
+        <div> 
+          <button
+          className='thumbs'
+          onClick={() => dispatch(thumbsDown(selectedMovie.id))}
+          >
+          <img src={thumbsDownImage} alt='down'/>
+          </button>
+        </div> 
+      </div>
     </div>
   )
 };

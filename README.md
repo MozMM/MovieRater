@@ -2,7 +2,7 @@
 #### A Web app to search movies and rate them.
 #### Marta Mozelle - Sole Developer
 
-## ⭐  Project is in progress! 
+### ⭐  Project is in progress! 
 ### Structure is completed. Still to do: Frontend styling and adding further tests. 
 
 ### Project goals met: 
@@ -16,14 +16,14 @@
 ### Tech Stack
 | React | Redux | Express | Sequelize | Node.js | Jest |
 
-## Set Up
+### Set Up
 1) You will need [postgres installed](https://www.postgresql.org/download/). 
 * alternatively [postgres homebrew install](https://wiki.postgresql.org/wiki/Homebrew) is useful.
 2) create two databases: 
 * `createdb movie-rater-mozelle`
 * `createdb movie-rater-mozelle_test`   (if you would like to run the test suites) 
 3) Clone repo to your local machine.
-4) Add a .env file in the root directory: movie-rater/.env
+4) Add an .env file in the root directory: movie-rater/.env
 5) In this .env file, add the variable: REACT_APP_MOVIE_API_KEY=*"Paste your API key for The Movie Database here"*
 * (API key was sent with a specific submission. If you're another party interested in running this project, please email me for a key.)
 6) `npm install`

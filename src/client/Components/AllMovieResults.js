@@ -9,10 +9,13 @@ import {
 } from '../store/movieSelectors';
 
 const renderPoster = (movie) => {
-  return movie.poster_path ?
-    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
+  return ( movie.poster_path ?
+    <img className='movie-results__poster' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
     :
-    <div style={{width: 500, height: 200, backgroundColor: 'blueviolet'}}></div> 
+    <div className='movie-results__poster__default'>
+      <div>{movie.title}</div>
+    </div> 
+  )
 }
 
 const AllMovieResults = (props) => {
@@ -31,32 +34,46 @@ const AllMovieResults = (props) => {
   }
 
   return (
-    <div className="movieresults__container">
-      <form>
-        <div>
-          <label>Enter a Movie Title here:</label>
-          <input type="text" onChange={handleInputChange} />
-        </div>
-        <div>
-          <button type='submit' onClick={() => dispatch(getMovies(input))}>Get Movie</button>
-        </div>
-      </form>
-      <div>
-        {hasResults && movieResults.map((movie) => (
-          <div key={movie.id}>
-            <div>
-              {movie.title}
-            </div>
-            <div>
-              {renderPoster(movie)}
-            </div>
-            <Link to={`/movie/${movie.id}`}>
-              <button>get details</button>
-            </Link>
+    <div>
+      <div className='search__container'>
+        <form className='__form'>
+          <div>
+            <label>{'What are you looking for?'}</label>
           </div>
-        ))}
+          <div className='__search-bar'>
+            <input className='__text-input' type="text" onChange={handleInputChange} />
+            <button  className='__button' type='submit' 
+              onClick={() => dispatch(getMovies(input))}
+            >
+              {'Search Movies'}
+            </button>
+          </div>
+        </form>
+      </div> 
+      <div>
+        {hasResults && 
+          <div>
+            <div className="movie-results__container __instructions"> 
+            {'Click on a poster for details, or to add your rating.'}
+            </div>
+
+            <div className="movie-results__container"> 
+              {movieResults.map((movie) => (
+                <div key={movie.id}>
+                  <Link to={`/movie/${movie.id}`}>
+                    <div>
+                      {renderPoster(movie)}
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+          }
+        <div>
         {movieFetchErrors && <div>Sorry, let's try that again.</div>}
-      </div>
+        </div>
+      </div>  
     </div>
   )
 }
