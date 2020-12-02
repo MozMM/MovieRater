@@ -1,10 +1,15 @@
 import axios from 'axios';
 import configureMockStore from 'redux-mock-store';
 import thunkMiddleware from 'redux-thunk';
-import * as mocks from '../mocks/mockTestData'
-
-import { getMovies, getMovieDetail, getRating, thumbsUp, thumbsDown } from './movieActions';
+import * as mocks from '../mocks/mockMovieAPIData'
 import { initialState, moviesReducer } from './moviesReducer';
+import { 
+  getMovies, 
+  getMovieDetail, 
+  getRating, 
+  thumbsUp, 
+  thumbsDown 
+} from './movieActions';
 
 const middlewares = [thunkMiddleware];
 const mockStore = configureMockStore(middlewares);
@@ -62,6 +67,15 @@ describe('Movie Actions', () => {
       expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
       expect(actions[1].type).toBe('GET_MOVIE_DETAIL_SUCCESS');
       expect(actions[1].payload).toEqual(mocks.detailWithDirector)
+    })
+
+    it('when Credits API call returns no director, dispatches MOVIE_DATA_LOADING then GET_MOVIE_DETAIL_SUCCESS', async () => {
+      axios.get.mockResolvedValueOnce(mocks.movieDetailResponse).mockResolvedValueOnce(mocks.movieCreditNoDirectorResponse);
+      await store.dispatch(getMovieDetail(34636));
+      const actions = store.getActions();
+      expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
+      expect(actions[1].type).toBe('GET_MOVIE_DETAIL_SUCCESS');
+      expect(actions[1].payload).toEqual(mocks.detailNoDirector)
     })
 
     it('when fails, dispatches MOVIE_DATA_LOADING then GET_MOVIE_DATA_FAIL', async () => {

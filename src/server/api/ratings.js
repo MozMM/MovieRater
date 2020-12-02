@@ -5,7 +5,7 @@ const { Ratings } = require('../db/models')
 // get rating
 router.get('/:id', async (req, res, next) => {
   try {
-    selectedMovieRatings = await Ratings.findOne({
+    let selectedMovieRatings = await Ratings.findOne({
       where: {
         movieId: req.params.id,
       },
