@@ -17,8 +17,7 @@
 | React | Redux | Express | Sequelize | Node.js | Jest |
 
 ## Set Up
-1) You will need [postgres installed](https://www.postgresql.org/download/). 
-* [alternatively postgres homebrew install is useful] (https://wiki.postgresql.org/wiki/Homebrew)
+1) You will need [postgres installed](https://www.postgresql.org/download/). Or, [alternatively postgres homebrew install is useful] (https://wiki.postgresql.org/wiki/Homebrew)
 2) create two databases: 
 * `createdb movie-rater-mozelle`
 * `createdb movie-rater-mozelle_test`   (if you would like to run the test suites) 
