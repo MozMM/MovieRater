@@ -23,10 +23,13 @@
 * `createdb movie-rater-mozelle`
 * `createdb movie-rater-mozelle_test`   (if you would like to run the test suites) 
 3) Clone repo to your local machine.
-4) `npm install`
-5) `npm run dev` to spin up both server api and webpack. 
+4) Add a .env file in the root directory: movie-rater/.env
+5) In this .env file, add the variable: REACT_APP_MOVIE_API_KEY=*"Paste your API key for The Movie Database here"*
+* (API key was sent with a specific submission. If you're another party interested in running this project, please email me for a key.)
+6) `npm install`
+7) `npm run dev` to spin up both server api and webpack. 
 
-6) Optional; to run tests: `npm run test`
+8) Optional; to run tests: `npm run test`
 
 #### Troubleshooting:
 If you're having database connection issues, make sure you have an accurate process.env.DATABASE_URL set, or that postgres is listening on its default port (localhost:5432)
