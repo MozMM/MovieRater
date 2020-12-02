@@ -18,7 +18,7 @@
 
 ## Set Up
 1) You will need [postgres installed](https://www.postgresql.org/download/). 
-* [alternatively postgres homebrew install is useful](https://wiki.postgresql.org/wiki/Homebrew)
+* alternatively [postgres homebrew install](https://wiki.postgresql.org/wiki/Homebrew) is useful.
 2) create two databases: 
 * `createdb movie-rater-mozelle`
 * `createdb movie-rater-mozelle_test`   (if you would like to run the test suites) 
