@@ -37,5 +37,4 @@ db.sync()  // sync our database
     });
 })
 
-
 module.exports = app;
