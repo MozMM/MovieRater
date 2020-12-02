@@ -1,6 +1,6 @@
 # Movie Rater
-### A Web app to search movies and rate them.
-### Marta Mozelle - Sole Developer
+#### A Web app to search movies and rate them.
+#### Marta Mozelle - Sole Developer
 
 ## ⭐  Project is in progress! 
 ### Structure is completed. Still to do: Frontend styling and adding further tests. 
