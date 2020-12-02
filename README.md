@@ -29,7 +29,7 @@
 6) `npm install`
 7) `npm run dev` to spin up both server api and webpack. 
 
-8) Optional; to run tests: 
+8) Optional - to run tests: 
 * control + c to end dev process
 * `npm run test`
 
