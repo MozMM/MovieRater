@@ -29,7 +29,9 @@
 6) `npm install`
 7) `npm run dev` to spin up both server api and webpack. 
 
-8) Optional; to run tests: control + c to end dev process, and `npm run test`
+8) Optional; to run tests: 
+* control + c to end dev process
+* `npm run test`
 
 #### Troubleshooting:
 If you're having database connection issues, make sure you have an accurate process.env.DATABASE_URL set, or that postgres is listening on its default port (localhost:5432)
