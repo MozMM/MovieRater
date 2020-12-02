@@ -16,4 +16,18 @@
 ### Tech Stack
 | React | Redux | Express | Sequelize | Node.js | Jest |
 
+## Set Up
+1) Clone repo to your local machine.
+2) `npm install`
+3) You will need postgres
+4) create two databases with these names: 
+* movie-rater-mozelle
+* movie-rater-mozelle_test (if you would like to run the test suites) 
+5) `npm run dev` to spin up both server api and webpack. 
+
+to run tests:
+`npm run test`
+
+#### Troubleshooting:
+If you're having database connection issues, make sure you have an accurate process.env.DATABASE_URL set, or that postgres is listening on its default port (localhost:5432)
 
