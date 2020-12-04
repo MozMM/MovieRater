@@ -28,7 +28,7 @@
 7) `npm run dev` to spin up both server api and webpack. 
 
 8) Optional - to run tests: 
-* control + c to end dev process
+* control + c to end your 'run dev' process
 * `npm run test`
 
 #### Troubleshooting:
