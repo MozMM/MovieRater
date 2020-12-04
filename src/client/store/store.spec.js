@@ -46,7 +46,15 @@ describe('Movie Actions', () => {
       expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
       expect(actions[1].type).toBe('GET_MOVIES_SUCCESS');
       expect(actions[1].payload).toEqual(mocks.moviesAPIResponse.data.results);  
-    })
+    });
+
+    it('when successful but no results, dispatches MOVIE_DATA_LOADING then GET_MOVIES_SUCCESS_NO_RESULTS', async () => {
+      axios.get.mockResolvedValueOnce(mocks.moviesAPIResponseNoResults);
+      await store.dispatch(getMovies('result-less query!'));
+      const actions = store.getActions();
+      expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
+      expect(actions[1].type).toBe('GET_MOVIES_SUCCESS_NO_RESULTS');
+    });
 
    it('when fails, dispatches MOVIE_DATA_LOADING then GET_MOVIE_DATA_FAIL', async () => {
     axios.get.mockRejectedValueOnce({ message: 'Request failed with status code 404' });
@@ -55,34 +63,34 @@ describe('Movie Actions', () => {
       expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
       expect(actions[1].type).toBe('GET_MOVIE_FAIL');
       expect(actions[1].payload.message).toBe('Request failed with status code 404');
-    })
-  })
+    });
+  });
 
   //------------getSingleMovieDetail Action -------------//
   describe('getSingleMovieDetail Action', () => {
-    it('when successful, dispatches MOVIE_DATA_LOADING then GET_MOVIE_DETAIL_SUCCESS', async () => {
+    it('when successful, dispatches MOVIE_DETAIL_LOADING then GET_MOVIE_DETAIL_SUCCESS', async () => {
       axios.get.mockResolvedValueOnce(mocks.movieDetailResponse).mockResolvedValueOnce(mocks.movieCreditResponse);
       await store.dispatch(getMovieDetail(34636));
       const actions = store.getActions();
-      expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
+      expect(actions[0].type).toBe('MOVIE_DETAIL_LOADING');
       expect(actions[1].type).toBe('GET_MOVIE_DETAIL_SUCCESS');
       expect(actions[1].payload).toEqual(mocks.detailWithDirector)
     })
 
-    it('when Credits API call returns no director, dispatches MOVIE_DATA_LOADING then GET_MOVIE_DETAIL_SUCCESS', async () => {
+    it('when Credits API call returns no director, dispatches MOVIE_DETAIL_LOADING then GET_MOVIE_DETAIL_SUCCESS with no director name', async () => {
       axios.get.mockResolvedValueOnce(mocks.movieDetailResponse).mockResolvedValueOnce(mocks.movieCreditNoDirectorResponse);
       await store.dispatch(getMovieDetail(34636));
       const actions = store.getActions();
-      expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
+      expect(actions[0].type).toBe('MOVIE_DETAIL_LOADING');
       expect(actions[1].type).toBe('GET_MOVIE_DETAIL_SUCCESS');
       expect(actions[1].payload).toEqual(mocks.detailNoDirector)
     })
 
-    it('when fails, dispatches MOVIE_DATA_LOADING then GET_MOVIE_DATA_FAIL', async () => {
+    it('when fails, dispatches MOVIE_DETAIL_LOADING then GET_MOVIE_DATA_FAIL', async () => {
       axios.get.mockRejectedValueOnce({ message: 'Request failed with status code 404' })
       await store.dispatch(getMovieDetail());
       const actions = store.getActions();
-      expect(actions[0].type).toBe('MOVIE_DATA_LOADING');
+      expect(actions[0].type).toBe('MOVIE_DETAIL_LOADING');
       expect(actions[1].type).toBe('GET_MOVIE_FAIL');
       expect(actions[1].payload.message).toBe('Request failed with status code 404')
     })

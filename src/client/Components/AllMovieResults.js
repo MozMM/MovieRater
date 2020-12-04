@@ -7,14 +7,33 @@ import {
   movieResultsSelector,
   isLoadingSelector
 } from '../store/movieSelectors';
+import cow from '../images/Cow.jpg'
 
 const renderPoster = (movie) => {
-  return ( movie.poster_path ?
+  return (movie.poster_path ?
     <img className='movie-results__poster' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
     :
     <div className='movie-results__poster__default'>
-      <div>{movie.title}</div>
+      <div className='default-text'>{movie.title}</div>
+      <div>{'No image available'}</div>
     </div> 
+  )
+}
+
+const renderNoMooviesMsg = (message) => {
+  let text = message;
+  if (message === 'Request failed with status code 422') {
+    text = 'No Moovies. \n Please provide \n a search query!'
+  }
+  return (
+    <div className='cow-message-container'>
+      <div className='cow-text__container'> 
+        <div className='cow-text'>{text.split('\n')[0]}</div> 
+        <div className='cow-text'>{text.split('\n')[1]}</div>
+        <div >{text.split('\n')[2]}</div>
+      </div>
+      <img src={cow} alt=''/>
+    </div>
   )
 }
 
@@ -30,25 +49,25 @@ const AllMovieResults = (props) => {
   const handleInputChange = (evt) => setInput(evt.target.value);
 
   if (isLoading) {
-    return (<div>Loading...</div>);
-  }
+    return (<div className='loading-text'>{'Loading...'}</div>);
+  } 
 
   return (
-    <div>
-      <div className='search__container'>
-        <form className='__form'>
-          <div>
-            <label>{'What are you looking for?'}</label>
-          </div>
-          <div className='__search-bar'>
-            <input className='__text-input' type="text" onChange={handleInputChange} />
-            <button  className='__button' type='submit' 
-              onClick={() => dispatch(getMovies(input))}
-            >
-              {'Search Movies'}
-            </button>
-          </div>
-        </form>
+    <>
+      <div className='__search-container'>
+        <div className='__name'>
+          <form className='search'>
+            <label className='__label'>{'What are you looking for?'}</label>
+            <span className="__input-button-container">
+              <input className='__text-input' type="text" onChange={handleInputChange} />
+              <button  className='__button' type='submit' 
+                onClick={() => dispatch(getMovies(input))}
+              >
+                {'Search Movies'}
+              </button>
+            </span>
+          </form>
+        </div>
       </div> 
       <div>
         {hasResults && 
@@ -56,14 +75,11 @@ const AllMovieResults = (props) => {
             <div className="movie-results__container __instructions"> 
             {'Click on a poster for details, or to add your rating.'}
             </div>
-
             <div className="movie-results__container"> 
               {movieResults.map((movie) => (
                 <div key={movie.id}>
                   <Link to={`/movie/${movie.id}`}>
-                    <div>
-                      {renderPoster(movie)}
-                    </div>
+                    {renderPoster(movie)}
                   </Link>
                 </div>
               ))}
@@ -71,10 +87,10 @@ const AllMovieResults = (props) => {
           </div>
           }
         <div>
-        {movieFetchErrors && <div>Sorry, let's try that again.</div>}
+        {movieFetchErrors && renderNoMooviesMsg(movieFetchErrors)}
         </div>
       </div>  
-    </div>
+    </>
   )
 }
 
