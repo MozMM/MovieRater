@@ -42,6 +42,7 @@ const MovieDetail = (props) => {
   useEffect(() => {
     dispatch(getMovieDetail(id));
     dispatch(getRating(id))
+    // eslint-disable-next-line
   }, []); // empty [] will only run callback on mount. 
 
   if (isLoading) {
