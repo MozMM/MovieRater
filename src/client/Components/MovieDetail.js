@@ -11,7 +11,7 @@ const renderPoster = (movie) => {
   return ( movie.poster_path ?
     <img className='movie-detail__poster' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
     :
-    <div className='detail-poster__default'>
+    <div className='movie-detail__poster__default'>
       <div>{movie.title}</div>
       <div>{'No image available'}</div> 
     </div> 
@@ -20,14 +20,14 @@ const renderPoster = (movie) => {
 
 const renderRatings = (ratingFromDataBase) => { 
   if (!ratingFromDataBase) {
-    return (<div className='ratings-container rating-text'>{'No one around here has voted on this movie yet, go ahead and be the first.'}</div>);
+    return (<div className='ratings__container'> <div className='rating-text'>{'No one around here has voted on this movie yet, go ahead and be the first.'}</div></div>);
   }
   const { thumbsUp, thumbsDown } = ratingFromDataBase;
   return (
-    <div className='ratings-container'>
-      <span className='rating-text'> {`Thumbs Up: ${thumbsUp}`}</span>
-      <span className='__symbol'>{'❖'}</span>
-      <span className='rating-text'>{`Thumbs Down: ${thumbsDown}`}</span>
+    <div className='ratings__container'>
+      <span className='ratings__text'> {`Thumbs Up: ${thumbsUp}`}</span>
+      <span className='ratings__symbol'>{'❖'}</span>
+      <span className='ratings__text'>{`Thumbs Down: ${thumbsDown}`}</span>
     </div> 
   );
 }
@@ -55,33 +55,33 @@ const MovieDetail = (props) => {
 
   return (
     <div className="movie-detail__container">
-      <div className='poster-container'>
+      <div className='movie-detail__poster__container'>
         {renderPoster(selectedMovie)}
       </div>
-      <div className='__text-container'>
-        <div className='movie-title-detail'>{`${selectedMovie.title}`}</div>
-        <div className='movie-details'>{`Director: ${selectedMovie.director}`}</div>
+      <div className='movie-detail__text__container'>
+        <div className='movie-detail__title'>{`${selectedMovie.title}`}</div>
+        <div className='movie-detail__text'>{`Director: ${selectedMovie.director}`}</div>
         {selectedMovie.release_date && 
-        <div className='movie-details'> {`Released: ${justYear(selectedMovie.release_date)}`}</div>}
-        <div className='movie-details'>{` Description: ${selectedMovie.overview}`}</div>
+        <div className='movie-detail__text'> {`Released: ${justYear(selectedMovie.release_date)}`}</div>}
+        <div className='movie-detail__text'>{` Description: ${selectedMovie.overview}`}</div>
         <div> 
           {renderRatings(ratingFromDataBase)}
         </div> 
-        <div className='thumbs-container'>
+        <div className='thumbs__container'>
           <div> 
             <button
-            className='__button __thumbs'
+            className='search__button thumbs__button'
             onClick={() => dispatch(thumbsUp(selectedMovie.id))}
             >
-              <img className='__thumbs-image' src={thumbsUpImage} alt='up'/>
+              <img className='thumbs-image' src={thumbsUpImage} alt='up'/>
             </button>
           </div> 
           <div> 
             <button
-            className='__button __thumbs'
+            className='search__button thumbs__button'
             onClick={() => dispatch(thumbsDown(selectedMovie.id))}
             >
-            <img className='__thumbs-image' src={thumbsDownImage} alt='down'/>
+            <img className='thumbs-image' src={thumbsDownImage} alt='down'/>
             </button>
           </div> 
         </div>
@@ -89,7 +89,7 @@ const MovieDetail = (props) => {
           <div>
             <Link to='/'>
               <button
-              className='__button'
+              className='search__button'
               >
               {'Back to Search'}
               </button>
