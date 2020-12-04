@@ -7,21 +7,15 @@ const NotFoundPage = () => {
     <div className='notFound-message-container'>
       <img src={turtle} alt=''/>
       <div > 
-      {/* <div> */}
-      <div className='notFound__text'>{'Nothing over here...'}</div> 
-            <Link to='/'>
-              <button
-              className='__button'
-              >
-              {'Back to Search'}
-              </button>
-            </Link>
-          </div>
-        {/* 
+        <div className='notFound__text'>{'Nothing over here...'}</div> 
         <Link to='/'>
-          <div>{'Return to Search'}</div>
+          <button
+          className='__button'
+          >
+          {'Back to Search'}
+          </button>
         </Link>
-      </div> */}
+      </div>
     </div>
   )
 }

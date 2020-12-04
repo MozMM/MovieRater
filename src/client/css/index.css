@@ -119,12 +119,13 @@ form .__input-button-container {
   display: flex;
   justify-content: center;
   padding-top: 2rem;
- }
+}
 
 .cow-text__container {
   font-size: xx-large;
   margin-top: 5rem;
 }
+
 .cow-text {
   font-size: xx-large;
   margin: 1rem 1rem 0 0rem;
