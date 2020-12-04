@@ -3,8 +3,9 @@
 #### Marta Mozelle - Sole Developer
 
 <p align="center">
-  <img src=https://github.com/MozMM/ComeTellMe/blob/main/public/demo/ComeTellMeDemo1.gif height="760">
+  <img src=https://github.com/MozMM/MovieRater/tree/main/src/client/images/Readme%20Demo height="760">
 </p>
+
 ### Project goals met: 
 - Integrated calls to [The Movie Database API](themoviedb.org) for listing data. 
 - Wrote backend API to store and serve rating data from site users. 
