@@ -26,7 +26,7 @@ const renderNoMooviesMsg = (message) => {
     text = 'No Moovies. \n Please provide \n a search query!'
   }
   return (
-    <div className='cow-message-container'>
+    <div className='cow-error__container'>
       <div className='cow-text__container'> 
         <div className='cow-text'>{text.split('\n')[0]}</div> 
         <div className='cow-text'>{text.split('\n')[1]}</div>
@@ -58,13 +58,13 @@ const AllMovieResults = (props) => {
 
   return (
     <>
-      <div className='__search-container'>
-        <div className='__name'>
-          <form className='search'>
-            <label className='__label'>{'What are you looking for?'}</label>
-            <span className="__input-button-container">
-              <input className='__text-input' type="text" onChange={handleInputChange} />
-              <button  className='__button' type='submit' 
+      <div className='search-container'>
+        <div className='search'>
+          <form className='search__form'>
+            <label className='search__label'>{'What are you looking for?'}</label>
+            <span className='search__button-container'>
+              <input className='search__input' type="text" onChange={handleInputChange} />
+              <button  className='search__button' type='submit' 
                 onClick={() => dispatch(getMovies(input))}
               >
                 {'Search Movies'}
@@ -76,7 +76,7 @@ const AllMovieResults = (props) => {
       <div>
         {hasResults && 
           <div>
-            <div className="movie-results__container __instructions"> 
+            <div className='movie-results__container movie-results__instructions'> 
             {'Click on a poster for details, or to add your rating.'}
             </div>
             <div className="movie-results__container"> 

@@ -6,7 +6,7 @@ import rightPointer from '../images/RightPointing.png'
 const Header = () => {
   return (
     <div className='header'> 
-        <div className='text-pointer__container'>
+        <div className='header-stuff__container'>
           <Link to='/'>
             <img className='pointer-image' src={rightPointer} alt=''/>
             <div id='header__text'>{'Movie Rate-I-fier'}</div> 
