@@ -21,7 +21,7 @@ const renderPoster = (movie) => {
 }
 
 const renderNoMooviesMsg = (message) => {
-  let text = message;
+  let text = 'No Moovies. \n Please try \n a different query.';
   if (message === 'Request failed with status code 422') {
     text = 'No Moovies. \n Please provide \n a search query!'
   }
