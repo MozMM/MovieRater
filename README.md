@@ -2,12 +2,10 @@
 #### A Web app to search movies and rate them.
 #### Marta Mozelle - Sole Developer
 
-### ⭐  Project is in progress! 
-### Structure is completed. Still to do: Frontend styling and adding further tests. 
-
 ### Project goals met: 
 - Integrated calls to [The Movie Database API](themoviedb.org) for listing data. 
 - Wrote backend API to store and serve rating data from site users. 
+- Next to do: jest-dom testing. 
 
 ### Things to note:
 - Worked with React-Redux selectors. These replace the need for connected components using Redux's connect(), mapState() and mapDispatch().
@@ -18,20 +16,22 @@
 
 ### Set Up
 1) You will need [postgres installed](https://www.postgresql.org/download/). 
-* alternatively [postgres homebrew install](https://wiki.postgresql.org/wiki/Homebrew) is useful.
+  * alternatively [postgres homebrew install](https://wiki.postgresql.org/wiki/Homebrew) is useful.
 2) create two databases: 
-* `createdb movie-rater-mozelle`
-* `createdb movie-rater-mozelle_test`   (if you would like to run the test suites) 
+  * `createdb movie-rater-mozelle`
+  * `createdb movie-rater-mozelle_test`   (if you would like to run the test suites) 
 3) Clone repo to your local machine.
-4) Add an .env file in the root directory: movie-rater/.env
+
+4) Add a .env file in the root directory: MovieRater/.env
+
 5) In this .env file, add the variable: REACT_APP_MOVIE_API_KEY=*"Paste your API key for The Movie Database here"*
-* (API key was sent with a specific submission. If you're another party interested in running this project, please email me for a key.)
+  * (API key was sent with a specific submission. If you're another party interested in running this project, please email me for a key.)
 6) `npm install`
 7) `npm run dev` to spin up both server api and webpack. 
 
 8) Optional - to run tests: 
-* control + c to end dev process
-* `npm run test`
+  * control + c to end your 'run dev' process
+  * `npm run test`
 
 #### Troubleshooting:
 If you're having database connection issues, make sure you have an accurate process.env.DATABASE_URL set, or that postgres is listening on its default port (localhost:5432)
