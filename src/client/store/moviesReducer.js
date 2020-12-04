@@ -14,9 +14,13 @@ export const initialState = {
 export function moviesReducer(state = initialState, action) {
   switch (action.type) {
     case types.MOVIE_DATA_LOADING: 
-      return { ...state, isLoading: true };
+      return { ...state, movieResults: [], isLoading: true, errorMsg: null };
+    case types.MOVIE_DETAIL_LOADING: 
+      return { ...state, isLoading: true, errorMsg: null };
     case types.GET_MOVIES_SUCCESS: 
       return { ...state, movieResults: action.payload, errorMsg: null, isLoading: false };
+    case types.GET_MOVIES_SUCCESS_NO_RESULTS:
+      return {...state, movieResults: action.payload, errorMsg: 'No Moovies. \n Please try \n a different query.', isLoading: false }
     case types.GET_MOVIE_DETAIL_SUCCESS:
       return {...state, movieDetail: action.payload, errorMsg: null, isLoading: false };
     case types.GET_MOVIE_DATA_FAIL:
@@ -26,6 +30,6 @@ export function moviesReducer(state = initialState, action) {
     case types.GET_RATING_FROM_DB_FAIL:
       return {...state, dataBaseErr: action.payload };
     default:
-      return state
+      return state;
   }
 }
