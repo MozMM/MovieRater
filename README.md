@@ -2,6 +2,9 @@
 #### A Web app to search movies and rate them.
 #### Marta Mozelle - Sole Developer
 
+<p align="center">
+  <img src=https://github.com/MozMM/ComeTellMe/blob/main/public/demo/ComeTellMeDemo1.gif height="760">
+</p>
 ### Project goals met: 
 - Integrated calls to [The Movie Database API](themoviedb.org) for listing data. 
 - Wrote backend API to store and serve rating data from site users. 
@@ -15,7 +18,7 @@
 | React | Redux | Express | Sequelize | Node.js | Jest |
 
 ### Set Up
-1) You will need [postgres installed](https://www.postgresql.org/download/). 
+1) You will need [postgres](https://www.postgresql.org/download/) installed. 
 * alternatively [postgres homebrew install](https://wiki.postgresql.org/wiki/Homebrew) is useful.
 
 2) create two databases: 
@@ -34,8 +37,8 @@
 7) `npm run dev` to spin up both server api and webpack. 
 
 8) Optional - to run tests: 
-* control + c to end your 'run dev' process
-* `npm run test`
+  * control + c to end your 'run dev' process
+  * `npm run test`
 
 #### Troubleshooting:
 If you're having database connection issues, make sure you have an accurate process.env.DATABASE_URL set, or that postgres is listening on its default port (localhost:5432)
