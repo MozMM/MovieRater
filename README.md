@@ -3,7 +3,7 @@
 #### Marta Mozelle - Sole Developer
 
 <p align="center">
-  <img src=https://github.com/MozMM/MovieRater/tree/main/src/client/images/Readme%20Demo.gif height="900">
+  <img src=https://github.com/MozMM/MovieRater/blob/main/src/client/images/ReadmeDemo/Movie-Rate-I-fier.gif height="900">
 </p>
 
 ### Project goals met: 
