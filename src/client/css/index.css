@@ -119,12 +119,13 @@ form .__input-button-container {
   display: flex;
   justify-content: center;
   padding-top: 2rem;
- }
+}
 
 .cow-text__container {
   font-size: xx-large;
-  margin: 5rem 1rem 0 0;
+  margin-top: 5rem;
 }
+
 .cow-text {
   font-size: xx-large;
   margin: 1rem 1rem 0 0rem;
@@ -262,14 +263,14 @@ button:focus {
 }
 
 /* --------- not found page --------- */
-.animal-message-container {
+.notFound-message-container {
  display: flex;
  justify-content: center;
 }
 
-.animal__text {
+.notFound__text {
 font-size: xx-large;
-margin: 4rem 3rem 0 1rem;
+margin: 18rem 3rem 2rem .5rem;
 }
 
 /* --------- loading error messages --------- */
