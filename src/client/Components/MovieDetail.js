@@ -12,22 +12,22 @@ const renderPoster = (movie) => {
     <img className='movie-detail__poster' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title}/>
     :
     <div className='detail-poster__default'>
-      <div classnName='detail-poster__text'>{movie.title}</div>
-      <div>{'No image available'}</div>
+      <div>{movie.title}</div>
+      <div>{'No image available'}</div> 
     </div> 
   )
 }
 
 const renderRatings = (ratingFromDataBase) => { 
   if (!ratingFromDataBase) {
-    return (<div className='ratings-container'> No one around here has voted on this movie yet, go ahead and be the first.</div>);
+    return (<div className='ratings-container rating-text'>{'No one around here has voted on this movie yet, go ahead and be the first.'}</div>);
   }
   const { thumbsUp, thumbsDown } = ratingFromDataBase;
   return (
     <div className='ratings-container'>
-      <span className='__rating'> {`Thumbs Up: ${thumbsUp}`}</span>
+      <span className='rating-text'> {`Thumbs Up: ${thumbsUp}`}</span>
       <span className='__symbol'>{'❖'}</span>
-      <span className='__rating'>{`Thumbs Down: ${thumbsDown}`}</span>
+      <span className='rating-text'>{`Thumbs Down: ${thumbsDown}`}</span>
     </div> 
   );
 }
@@ -45,7 +45,11 @@ const MovieDetail = (props) => {
   }, []); // empty [] will only run callback on mount. 
 
   if (isLoading) {
-    return (<div className='loading-text'>{'Loading...'}</div>)
+    return (
+      <div className='loading-text__container'>
+        <div className='loading-text'>{'Loading...'}</div>
+      </div>
+    )
   }
 
   return (

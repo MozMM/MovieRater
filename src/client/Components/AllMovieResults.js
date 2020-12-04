@@ -49,7 +49,11 @@ const AllMovieResults = (props) => {
   const handleInputChange = (evt) => setInput(evt.target.value);
 
   if (isLoading) {
-    return (<div className='loading-text'>{'Loading...'}</div>);
+    return (
+      <div className='loading-text__container'>
+        <div className='loading-text'>{'Loading...'}</div>
+      </div>
+    )
   } 
 
   return (
