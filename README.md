@@ -28,7 +28,7 @@
 
 3) Clone repo to your local machine.
 
-4) Rename the .env-example file the root directory, removing '-example' so it's now like this: MovieRater/.env 
+4) Rename the .env-example file in the root directory, removing '-example' so it's like this: MovieRater/.env 
 
 5) In this .env file, add your API key to this variable: REACT_APP_MOVIE_API_KEY=*"Paste your API key for The Movie Database here"*
 * (API key was sent with a specific submission. If you're another party interested in running this project, please email me for a key.)
