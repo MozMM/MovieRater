@@ -43,6 +43,6 @@
 
 #### Troubleshooting:
 If you're having database connection issues:
-* first just control + c, and `npm run dev` again. Make sure to give time to spin up both servers. Its a little tempermental.  
+* first just control + c, and `npm run dev` again. Make sure to give time to spin up both servers.  
 * make sure you have an accurate process.env.DATABASE_URL set, or that postgres is listening on its default port (localhost:5432)
 
