@@ -9,6 +9,7 @@
 ### Project goals met: 
 - Integrated calls to [The Movie Database API](themoviedb.org) for listing data. 
 - Wrote backend API to store and serve rating data from site users. 
+- Wrote Jest testing for backend, store, and utils. 
 - Next to do: jest-dom testing. 
 
 ### Things to note:
