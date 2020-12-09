@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { isLoadingSelector, movieDetailSelector, ratingFromDataBaseSelector } from '../store/movieSelectors';
 import { getMovieDetail, getRating, thumbsUp, thumbsDown } from '../store/movieActions';
-import { justYear } from '../utils/dateUtils';
+import { justYear } from '../utils/stringUtils';
 import thumbsUpImage from '../images/ThumbsUp.png';
 import thumbsDownImage from '../images/ThumbsDown.png';
 

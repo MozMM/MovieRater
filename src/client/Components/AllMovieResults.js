@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies } from '../store/movieActions';
+import { checkAndSplitMsg } from '../utils/stringUtils'
 import { 
   movieErrorSelector, 
   movieResultsSelector,
@@ -21,16 +22,13 @@ const renderPoster = (movie) => {
 }
 
 const renderNoMooviesMsg = (message) => {
-  let text = 'No Moovies. \n Please try \n a different query.';
-  if (message === 'Request failed with status code 422') {
-    text = 'No Moovies. \n Please provide \n a search query!'
-  }
+  const splitMsg = checkAndSplitMsg(message)
   return (
     <div className='cow-error__container'>
       <div className='cow-text__container'> 
-        <div className='cow-text'>{text.split('\n')[0]}</div> 
-        <div className='cow-text'>{text.split('\n')[1]}</div>
-        <div >{text.split('\n')[2]}</div>
+        <div className='cow-text'>{splitMsg[0]}</div> 
+        <div className='cow-text'>{splitMsg[1]}</div>
+        <div >{splitMsg[2]}</div>
       </div>
       <img src={cow} alt=''/>
     </div>
