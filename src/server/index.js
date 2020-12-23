@@ -16,10 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-
-  console.log('path is =>>', path.join(__dirname, '.../', 'build', 'index.html'));
-  // was __dirname, '.../', 'build', 'index.html'
+  res.sendFile(path.join(__dirname, 'index.html'));
+  //console.log('path is =>>', path.join(__dirname, '.../', 'build', 'index.html'));
 });
 
 // to ratings routes
