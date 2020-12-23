@@ -9,16 +9,17 @@ const port = process.env.PORT || 5000;
 
 app.use(morgan('dev'));
 
-app.use(express.static(path.join(__dirname, '.../', 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve("build/index.html"))
+  res.sendFile('index.html', { root: 'app/build/' }); // 
   //res.sendFile(path.join(__dirname, 'index.html'));
-  //res.sendFile('index.html');
+  //res.sendFile('index.html'); // "path must be absolute or specify root to res.sendFile"
+  // res.sendFile(path.resolve("build/index.html")) // nothing
   //console.log('path is =>>', path.join(__dirname, '.../', 'build', 'index.html'));
 });
 
