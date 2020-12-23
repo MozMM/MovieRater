@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7d33e0e7.chunk.css",
+    "main.js": "/static/js/main.e185bdee.chunk.js",
+    "main.js.map": "/static/js/main.e185bdee.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8b3f3fe5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8b3f3fe5.js.map",
+    "static/js/2.dadf98cc.chunk.js": "/static/js/2.dadf98cc.chunk.js",
+    "static/js/2.dadf98cc.chunk.js.map": "/static/js/2.dadf98cc.chunk.js.map",
+    "static/js/3.f22fc898.chunk.js": "/static/js/3.f22fc898.chunk.js",
+    "static/js/3.f22fc898.chunk.js.map": "/static/js/3.f22fc898.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.7d33e0e7.chunk.css.map": "/static/css/main.7d33e0e7.chunk.css.map",
+    "static/js/2.dadf98cc.chunk.js.LICENSE.txt": "/static/js/2.dadf98cc.chunk.js.LICENSE.txt",
+    "static/media/Cow.18bf5238.jpg": "/static/media/Cow.18bf5238.jpg",
+    "static/media/RightPointing.ca24b20e.png": "/static/media/RightPointing.ca24b20e.png",
+    "static/media/ThumbsDown.12398e01.png": "/static/media/ThumbsDown.12398e01.png",
+    "static/media/ThumbsUp.75b42780.png": "/static/media/ThumbsUp.75b42780.png",
+    "static/media/Turtle.ec316491.jpg": "/static/media/Turtle.ec316491.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8b3f3fe5.js",
+    "static/js/2.dadf98cc.chunk.js",
+    "static/css/main.7d33e0e7.chunk.css",
+    "static/js/main.e185bdee.chunk.js"
+  ]
+}
