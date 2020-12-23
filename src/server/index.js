@@ -9,15 +9,16 @@ const port = process.env.PORT || 5000;
 
 app.use(morgan('dev'));
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '.../', 'build')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', function (req, res) {
-  res.sendFile('index.html');
+  res.sendFile(path.resolve("index.html"))
   //res.sendFile(path.join(__dirname, 'index.html'));
+  //res.sendFile('index.html');
   //console.log('path is =>>', path.join(__dirname, '.../', 'build', 'index.html'));
 });
 
