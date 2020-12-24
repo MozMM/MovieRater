@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 
 app.use(morgan('dev'));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 console.log('dirname', __dirname);
 
 app.use(bodyParser.json());
