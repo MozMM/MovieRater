@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(morgan('dev'));
 
 // app.use(express.static('../../build/static'));
-app.use(express.static(path.join(__dirname, '../../', 'build/static')));
+app.use(express.static('../../build/static'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
