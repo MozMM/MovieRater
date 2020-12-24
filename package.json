@@ -32,10 +32,13 @@
   },
   "scripts": {
     "server": "nodemon ./src/server",
+    "start": "node ./src/server",
     "client": "react-scripts start",
+    "build": "react-scripts build",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "react-scripts test"
   },
+  "homepage": "./",
   "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [
