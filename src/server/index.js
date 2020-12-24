@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', function (req, res) {
-  res.sendFile('index.html', { root: 'build/' }); // Just white, no error. 
+  res.sendFile('index.html', { root: __dirname }); // 'build/' Just white, no error. 
   //res.sendFile(path.join(__dirname, 'index.html'));
   //res.sendFile('index.html'); // "path must be absolute or specify root to res.sendFile"
   // res.sendFile(path.resolve("build/index.html")) // nothing
