@@ -38,6 +38,7 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "react-scripts test"
   },
+  "homepage": "./",
   "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [
