@@ -15,11 +15,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // to ratings routes
 app.use('/api', require('./api'))
 
+// You may need to set an if case for process.env.NODE_DEV which is probably automatic, for local run.
+
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static(path.join(__dirname, '../', 'client/build')));
 
   app.get('*', function (req, res) {
-      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+      res.sendFile(path.join(__dirname, '../', 'client/build', 'index.html'));
   });
 };
 
