@@ -9,17 +9,19 @@ const port = process.env.PORT || 5000;
 
 app.use(morgan('dev'));
 
-app.use(express.static('./app/build/'));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function (req, res) {
-  res.sendFile('index.html', { root: 'build/' });  
-});
-
 // to ratings routes
 app.use('/api', require('./api'))
+
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', function (req, res) {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+};
 
 app.use(function (err, req, res, next) {
   console.error(err);
