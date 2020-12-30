@@ -1,1 +1,1 @@
-web: client:build
+web: cd client && npm run build
