@@ -4,12 +4,12 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
-const db = require('../server/db')
+const db = require('./db')
 const port = process.env.PORT || 5000; 
 
 app.use(morgan('dev'));
 
-app.use(express.static('./app/build/static'));
+app.use(express.static('./app/build/'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
