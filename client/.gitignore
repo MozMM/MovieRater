@@ -8,11 +8,11 @@
 # testing
 /coverage
 
-# production
+# production (remove build when creating temp deploy branch)
 /build
 
+
 # misc
-deploy
 .DS_Store
 .env
 .env.local
