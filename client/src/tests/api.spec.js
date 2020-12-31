@@ -1,7 +1,7 @@
 const request = require('supertest')
-const db = require('../db')
-const router = require('../index')
-const { Ratings } = require('../db/models')
+const db = require('../../../server/db')
+const router = require('../../../server/index')
+const { Ratings } = require('../../../server/db/models')
 
 
 describe('api routes', () => {

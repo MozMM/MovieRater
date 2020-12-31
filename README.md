@@ -36,6 +36,8 @@
 
 6) `npm install`
 
+7) `cd client && npm install` (and don't forget to `cd ../` , to get back out to root)
+
 7) `npm run dev` to spin up both server api and webpack. (Give this an extra few seconds to get both processes going.) 
 
 8) Optional - to run tests: 
