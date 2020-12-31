@@ -33,7 +33,7 @@ db.sync()  // sync our database
   .then(function(){
     app.listen(port, function () {
       if (process.env.NODE_ENV !== 'test') {
-      console.log(`Hello YearOne Folks. Your server is listening on port ${port}`);
+      console.log(`Hello. Your server is listening on port ${port}`);
       }
     });
 })
