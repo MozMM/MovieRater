@@ -2,14 +2,14 @@ import axios from 'axios';
 import configureMockStore from 'redux-mock-store';
 import thunkMiddleware from 'redux-thunk';
 import * as mocks from '../mocks/mockMovieAPIData'
-import { initialState, moviesReducer } from './moviesReducer';
+import { initialState, moviesReducer } from '../store/moviesReducer';
 import { 
   getMovies, 
   getMovieDetail, 
   getRating, 
   thumbsUp, 
   thumbsDown 
-} from './movieActions';
+} from '../store/movieActions';
 
 const middlewares = [thunkMiddleware];
 const mockStore = configureMockStore(middlewares);

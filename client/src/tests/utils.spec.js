@@ -1,5 +1,5 @@
-import { justYear } from  './stringUtils'
-import { checkAndSplitMsg } from './stringUtils'
+import { justYear } from  '../utils/stringUtils'
+import { checkAndSplitMsg } from '../utils/stringUtils'
 
 
 describe('string utils', () => {
