@@ -8,8 +8,8 @@
 # testing
 /coverage
 
-# production 
-#(Have deliberately removed /build)
+# production (remove build when creating temp deploy branch)
+/build
 
 
 # misc
