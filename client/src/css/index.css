@@ -17,7 +17,7 @@ link {
 .header {
   display: flex;
   flex-direction: row;
-  height: 8rem;
+  padding: 1.4rem;
   background-color: #66072f;
   font-family: 'Gravitas One';
   text-justify: center;
@@ -29,23 +29,26 @@ div.header-stuff__container {
   display: inline;
   justify-self: center;
   text-align: center;
-  width: 48rem;
   height: 100%;
 }
 
 .pointer-image {
+  display: inline;
   position: relative;
   width: 160px;
-  top: 36px;
+  top: 1.3rem;
   left: -20px;
 }
 
 #header__text {
   display: inline;
-  margin: 0px 0 0px 0;
+  position: relative;
+  bottom: 1rem;
+  /* margin: 0px 0px 40px 0px; */
+  /* padding: 0px 0px 40px 0px; */
   font-size: 3.1rem;
   color: #fff481;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
   align-self: center;
 }
 
